@@ -1,0 +1,22 @@
+version: '3.5'
+
+services:
+  solidos-hasura-integracao:
+    image: hasura/graphql-engine:v1.3.0
+    container_name: "solidos-hasura-integracao"
+    ports:
+      - "8080:8080"
+    restart: always
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:lphantverd10@192.168.1.90:5433/solidos_hasura
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
+      HASURA_GRAPHQL_CORS_DOMAIN: '*'
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      HASURA_GRAPHQL_JWT_SECRET: '{"type": "RS256", "key": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAriQPGmKo+7PchktW/46z\n3qI/tcFzKf9nApQmK3Nkccd8EQRiOSUiKDtcvkplymgrCGKI+oylqllY/q+xxlEP\nunMRtlB7PzEiCnGE0fMabkkYT+84IbpyaDMSv2Z25ZBXLaWupVq4NitB2dKiZssi\niQL1sIc1FAZjOQONqrDdRCyKw8OGOgX3ZPNkgIdKtCXfOgjEMFnxKTk+B/GcwB/0\n+vS2oel56tlgromEqaOSN5o1IUWb/fz/oHC6eUhjDCfyizwDSTlfTtcmFSPCkk1K\nAk7HBqF45iiwKhZAum/JWZA6OPMHlGRt2pYOItrYPtOmknFe+OJVDZlAMQz4vc8J\nmtyfcM/Gl9JHTvOKC7itsIemssF3X/NX+sV+n46nSuKj/d/j8F578GI5lPgCHUEp\nelgIQFBVTpU8BxGt7MkVWTUIcH2YbIbbiZ2Dq9r7cC6uCPuYK3WeP4JFQLUNmzR2\nBvR37ch3vQ5MkKrZoVyzE46FlW2R6NWI3IGBgeR8zUZeTc6k4qA9RA8jyyvAXxkW\nlZ+cFfr/0ZpNAISrFRI/NmBEjXF/AzqVscgeJPUhpQEm/UlAyz7stjzJFLy3tlHO\nKDgbu79/mp3XaalRsRO56oesCGivTPgbgi4ixSZl6BCHlfbv9lXqZzTC309RDqiJ\n7TA5CLEGpcEA98CMphS39jECAwEAAQ==\n-----END PUBLIC KEY-----"}'
+      ## uncomment next line to set an admin secret
+      HASURA_GRAPHQL_ADMIN_SECRET: "mortadela1"
+    networks:
+      - backend
+networks:
+  backend:
+    name: backend-network

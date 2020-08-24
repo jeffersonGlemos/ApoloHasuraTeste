@@ -24,7 +24,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/@fullcalendar/core/main.min.css",
+              "node_modules/@fullcalendar/daygrid/main.min.css",
+              "node_modules/@fullcalendar/timegrid/main.min.css"
             ],
             "scripts": []
           },
@@ -119,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "DemonstrativoAgenda"
+    }
+  },
+  "defaultProject": "DemonstrativoAgenda",
+  "cli": {
+    "analytics": "2df4afe0-a53e-4fb3-a69c-c0a77500fd5a"
+  }
 }
